@@ -4,7 +4,7 @@
 
 # TP0
 
-## Repositorio de (Nombre Apellido) - (Padrón) - (Mail)
+## Repositorio de marianela fernanda gareca janko - 109606 - fernanda.gareca321@gmail.com
 
 - Para compilar:
 
