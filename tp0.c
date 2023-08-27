@@ -12,6 +12,7 @@ const char TIPO_PLANTA = 'P';
 const char TIPO_ELECTRICO = 'E';
 const char TIPO_ROCA = 'R';
 const char LIMITADOR = ';';
+const int MINIMO_CARACTERES=0;
 
 enum TIPO { NORMAL, FUEGO, AGUA, PLANTA, ELECTRICO, ROCA };
 
@@ -21,7 +22,10 @@ struct ataque {
 	unsigned int poder;
 };
 
-
+/*
+ *pre: recibe un string un limitador y la posicion actual en el strig.
+ * post: verifica que haya un nombre devuelve true si lo hay o false en caso contrario. 
+ */
 bool existe_un_nombre(char nombre[MAX_NOMBRE], char* texto, char separador,int*posicion)
 {
 	
@@ -39,7 +43,10 @@ bool existe_un_nombre(char nombre[MAX_NOMBRE], char* texto, char separador,int*p
     return nombre_encontrado;
 }
 
-
+/*
+ *pre: recibe el texto y la posicion actual en el texto. 
+ * post: devuelve el tipo segun el caracter 
+ */
 enum TIPO tipo(char* texto, int* posicion)
 {
     enum TIPO tipo_buscado;
@@ -66,6 +73,10 @@ enum TIPO tipo(char* texto, int* posicion)
 
 
 
+/*
+ *pre: recibe el texto la posicion actual en el texto y un limitador.
+ * post:si el texto aun no termino y el tipo es una upcion valida returna true caso contrario false.
+ */
 bool existe_un_tipo(char* texto,int posicion,char separador)
 {
 	posicion++;
@@ -76,6 +87,10 @@ bool existe_un_tipo(char* texto,int posicion,char separador)
 
 
 
+/*
+ *pre: recibe el texto y la posicion actual en el texto.
+ * post:devuelve true si existe un poder caso contrario retorna false.
+ */
 bool existe_un_poder(char* texto, int posicion)
 {
 	return texto[posicion] != 0;
@@ -83,6 +98,10 @@ bool existe_un_poder(char* texto, int posicion)
 
 
 
+/*
+ *pre: recibe el texto y la posicion actual en el texto.
+ * post:retorna el poder .
+ */
 int numero(char* texto, int* posicion)
 {
 	char numeros[MAX_NUMEROS];
@@ -110,7 +129,7 @@ struct ataque *parsear_ataque(char *texto, struct ataque *ataque)
 	int numero_buscado=0;
 	
 
-	if(strlen(texto) >0){
+	if(strlen(texto) > MINIMO_CARACTERES){
 		if(existe_un_nombre(nombre,texto,LIMITADOR,&posicion)){
 			strcpy(ataque->nombre,nombre);
 
