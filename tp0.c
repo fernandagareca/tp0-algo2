@@ -14,6 +14,9 @@ const char TIPO_ROCA = 'R';
 const char LIMITADOR = ';';
 const int MINIMO_CARACTERES=0;
 
+// Agrego este comentario y algunos espacios para que haya cambios entre las dos ramas y pueda crear el pull request para la corrección -Abril
+
+
 enum TIPO { NORMAL, FUEGO, AGUA, PLANTA, ELECTRICO, ROCA };
 
 struct ataque {
